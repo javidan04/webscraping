@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+<div class="row">
+
+    <div class="card text-center col-sm-6">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="true" href="#">Active</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">News List</h5>
+
+
+    {% for field in formNewsList %}
+     <div class="mb-3 row">
+        <label for="{{ field.name }}" class="col-sm-4 col-form-label">
+            {{ field.label }}
+        </label>
+        <div class="col-sm-8">
+             <textarea name="{{ field.name }}" class="form-control" id="{{ field.name }}" rows="1">{{ field.value }}</textarea>
+        </div>
+  </div>
+    {% endfor %}
+        <button name="submit" value="newsList" type="submit" class="btn btn-primary col-sm-12">Test(newsList)</button>
+
+  </div>
+</div>
+
+<div class="card text-center col-sm-6">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="true" href="#">Active</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">News</h5>
+    {% for field in formNews %}
+     <div class="mb-3 row">
+        <label for="staticEmail_{{ field.name }}" class="col-sm-4 col-form-label">
+            {{ field.label }}
+        </label>
+        <div class="col-sm-8">
+             <textarea name="{{ field.name }}" class="form-control" id="staticEmail_{{ field.name }}" rows="1">{{ field.value }}</textarea>
+        </div>
+  </div>
+    {% endfor %}
+        <button name="submit" value="news" type="submit" class="btn btn-primary col-sm-12">Test(news)</button>
+
+  </div>
+</div>
+
+<button name="submit" value="newsAll" type="submit" class="btn btn-primary col-sm-12">Test(All)</button>
+
+
+
+
+</div>
+        <div class="col-sm-12" style="margin-top:50px;">
+        <button name="submit" value="save" type="submit" class="btn btn-success col-sm-12">Save</button>
+    </div>
+</form>
+
+
+{% for news in newsList %}
+    <table  style="margin-top:50px;border:solid 1px black;">
+        <tr><td>__host:  </td><td> {{ news.host }}</td></tr>
+        <tr><td>__link:  </td><td>  {{ news.link }}</td></tr>
+        <tr><td>__title:  </td><td>  {{ news.title }}</td></tr>
+        <tr><td>__category:  </td><td>  {{ news.category }}</td></tr>
+        <tr><td>__subcategory:  </td><td>  {{ news.subcategory }}</td></tr>
+        <tr><td>__content:  </td><td>  {{ news.content }}</td></tr>
+        <tr><td>__main_image:  </td><td>  {{ news.main_image }}</td></tr>
+        <tr><td>__content_image:  </td><td>  {{ news.content_image }}</td></tr>
+        <tr><td>__content_video:  </td><td>  {{ news.content_video }}</td></tr>
+        <tr><td>__date_time:  </td><td>  {{ news.date_time }}</td></tr>
+        <tr><td>__content_date_time:  </td><td>  {{ news.content_date_time }}</td></tr>
+    </table>
+{% endfor %}
+</body>
+</html>

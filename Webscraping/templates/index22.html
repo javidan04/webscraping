@@ -1,0 +1,248 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+      <nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a href="/site/list" class="nav-link" id="nav-contact-tab">
+      <--
+      </a>
+
+   {% if newsListConfigModel.id %}
+        {% if newsListConfigModel.allow == 0 %}
+      <button style="margin-left: 20px" type="submit" name="submit" value="allow" class="btn btn-outline-success nav-link" id="nav-contact-tab3">Təstiq et</button>
+      {% endif %}
+       {% if newsListConfigModel.allow == 1 %}
+      <button style="margin-left: 20px"  type="submit" name="submit" value="deny" class="btn btn-danger nav-link" id="nav-contact-tab4">Təstiq ləğv et</button>
+      {% endif %}
+      <button style="margin-left: 20px"  type="submit" name="submit" value="delete" class="btn btn-danger nav-link" id="nav-contact-tab6">Sil</button>
+      {% endif %}
+
+      <button style="margin-left: 20px"  type="submit" name="submit" value="save" class="btn btn-outline-success nav-link" id="nav-contact-tab5">Yadda saxla</button>
+      <button style="margin-left: 20px"  type="submit" name="submit" value="newsList" class="btn btn-light nav-link" id="nav-contact-tab7">Test (newsList)</button>
+      <button style="margin-left: 20px"  type="submit" name="submit" value="news" class="btn btn-light nav-link" id="nav-contact-tab8">Test(news)</button>
+      <button style="margin-left: 20px"  type="submit" name="submit" value="newsAll" class="btn btn-light nav-link" id="nav-contact-tab9">Test(newsAll)</button>
+
+  </div>
+          <br>
+  <div class="nav nav-tabs" id="nav-tab1" role="tablist">
+
+
+    <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">News List</button>
+    <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">News</button>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+
+  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+       <div class="card text-center col-sm-12">
+   <div class="card-body">
+    <h5 class="card-title">News List</h5>
+
+
+
+      <div class="mb-3 row">
+        <label for="{{ formNewsList.newsListConfig_host.name }}" class="col-sm-3 col-form-label">
+            {{ formNewsList.newsListConfig_host.label }}
+        </label>
+        <div class="col-sm-9">
+             <textarea name="{{ formNewsList.newsListConfig_host.name }}" class="form-control" id="{{ formNewsList.newsListConfig_host.name }}" rows="1">{{ formNewsList.newsListConfig_host.value }}</textarea>
+        </div>
+      </div>
+
+       <div class="mb-3 row">
+        <label for="{{ formNewsList.newsListConfig_host.name }}" class="col-sm-3 col-form-label">
+            {{ formNewsList.newsListConfig_newsListLink.label }}
+        </label>
+        <div class="col-sm-9">
+             <textarea name="{{ formNewsList.newsListConfig_newsListLink.name }}" class="form-control" id="{{ formNewsList.newsListConfig_newsListLink.name }}" rows="1">{{ formNewsList.newsListConfig_newsListLink.value }}</textarea>
+        </div>
+      </div>
+
+       <div class="mb-3 row">
+        <label for="{{ formNewsList.newsListConfig_newsList.name }}" class="col-sm-3 col-form-label">
+            {{ formNewsList.newsListConfig_newsList.label }}
+        </label>
+        <div class="col-sm-9">
+             <textarea name="{{ formNewsList.newsListConfig_newsList.name }}" class="form-control" id="{{ formNewsList.newsListConfig_newsList.name }}" rows="1">{{ formNewsList.newsListConfig_newsList.value }}</textarea>
+        </div>
+      </div>
+
+       <div class="mb-3 row">
+        <label for="{{ formNewsList.newsListConfig_link.name }}" class="col-sm-3 col-form-label">
+            {{ formNewsList.newsListConfig_link.label }}
+        </label>
+        <div class="col-sm-3">
+             <textarea name="{{ formNewsList.newsListConfig_link_static_text.name }}" class="form-control" id="{{ formNewsList.newsListConfig_link_static_text.name }}" rows="1">{{ formNewsList.newsListConfig_link_static_text.value }}</textarea>
+        </div>
+        <div class="col-sm-6">
+             <textarea name="{{ formNewsList.newsListConfig_link.name }}" class="form-control" id="{{ formNewsList.newsListConfig_link.name }}" rows="1">{{ formNewsList.newsListConfig_link.value }}</textarea>
+        </div>
+
+      </div>
+
+       <div class="mb-3 row">
+        <label for="{{ formNewsList.newsListConfig_title.name }}" class="col-sm-3 col-form-label">
+            {{ formNewsList.newsListConfig_title.label }}
+        </label>
+        <div class="col-sm-9">
+             <textarea name="{{ formNewsList.newsListConfig_title.name }}" class="form-control" id="{{ formNewsList.newsListConfig_title.name }}" rows="1">{{ formNewsList.newsListConfig_title.value }}</textarea>
+        </div>
+      </div>
+
+       <div class="mb-3 row">
+        <label for="{{ formNewsList.newsListConfig_img.name }}" class="col-sm-3 col-form-label">
+            {{ formNewsList.newsListConfig_img.label }}
+        </label>
+
+      <div class="col-sm-3">
+             <textarea name="{{ formNewsList.newsListConfig_img_static_text.name }}" class="form-control" id="{{ formNewsList.newsListConfig_img_static_text.name }}" rows="1">{{ formNewsList.newsListConfig_img_static_text.value }}</textarea>
+        </div>
+           <div class="col-sm-6">
+             <textarea name="{{ formNewsList.newsListConfig_img.name }}" class="form-control" id="{{ formNewsList.newsListConfig_img.name }}" rows="1">{{ formNewsList.newsListConfig_img.value }}</textarea>
+        </div>
+      </div>
+
+       <div class="mb-3 row">
+        <label for="{{ formNewsList.newsListConfig_category.name }}" class="col-sm-3 col-form-label">
+            {{ formNewsList.newsListConfig_category.label }}
+        </label>
+        <div class="col-sm-9">
+             <textarea name="{{ formNewsList.newsListConfig_category.name }}" class="form-control" id="{{ formNewsList.newsListConfig_category.name }}" rows="1">{{ formNewsList.newsListConfig_category.value }}</textarea>
+        </div>
+      </div>
+
+  </div>
+</div>
+  </div>
+  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+      <div class="card text-center col-sm-12">
+  <div class="card-body">
+    <h5 class="card-title">News</h5>
+
+      <div class="mb-3 row">
+        <label for="{{ formNews.newsConfig_host.name }}" class="col-sm-3 col-form-label">
+            {{ formNews.newsConfig_host.label }}
+        </label>
+        <div class="col-sm-9">
+             <textarea name="{{ formNews.newsConfig_host.name }}" class="form-control" id="{{ formNews.newsConfig_host.name }}" rows="1">{{ formNews.newsConfig_host.value }}</textarea>
+        </div>
+      </div>
+       <div class="mb-3 row">
+        <label for="{{ formNews.newsConfig_category.name }}" class="col-sm-3 col-form-label">
+            {{ formNews.newsConfig_category.label }}
+        </label>
+        <div class="col-sm-9">
+             <textarea name="{{ formNews.newsConfig_category.name }}" class="form-control" id="{{ formNews.newsConfig_category.name }}" rows="1">{{ formNews.newsConfig_category.value }}</textarea>
+        </div>
+      </div>
+
+       <div class="mb-3 row">
+        <label for="{{ formNews.newsConfig_title.name }}" class="col-sm-3 col-form-label">
+            {{ formNews.newsConfig_title.label }}
+        </label>
+        <div class="col-sm-9">
+             <textarea name="{{ formNews.newsConfig_title.name }}" class="form-control" id="{{ formNews.newsConfig_title.name }}" rows="1">{{ formNews.newsConfig_title.value }}</textarea>
+        </div>
+      </div>
+
+       <div class="mb-3 row">
+        <label for="{{ formNews.newsConfig_img.name }}" class="col-sm-3 col-form-label">
+            {{ formNews.newsConfig_img.label }}
+        </label>
+            <div class="col-sm-3">
+             <textarea name="{{ formNews.newsConfig_img_static_text.name }}" class="form-control" id="{{ formNews.newsConfig_img_static_text.name }}" rows="1">{{ formNews.newsConfig_img_static_text.value }}</textarea>
+        </div>
+        <div class="col-sm-6">
+             <textarea name="{{ formNews.newsConfig_img.name }}" class="form-control" id="{{ formNews.newsConfig_img.name }}" rows="1">{{ formNews.newsConfig_img.value }}</textarea>
+        </div>
+
+
+      </div>
+
+       <div class="mb-3 row">
+        <label for="{{ formNews.newsConfig_content.name }}" class="col-sm-3 col-form-label">
+            {{ formNews.newsConfig_content.label }}
+        </label>
+        <div class="col-sm-9">
+             <textarea name="{{ formNews.newsConfig_content.name }}" class="form-control" id="{{ formNews.newsConfig_content.name }}" rows="1">{{ formNews.newsConfig_content.value }}</textarea>
+        </div>
+      </div>
+
+
+       <div class="mb-3 row">
+        <label for="{{ formNews.newsConfig_content_date_time.name }}" class="col-sm-3 col-form-label">
+            {{ formNews.newsConfig_content_date_time.label }}
+        </label>
+        <div class="col-sm-9">
+             <textarea name="{{ formNews.newsConfig_content_date_time.name }}" class="form-control" id="{{ formNews.newsConfig_content_date_time.name }}" rows="1">{{ formNews.newsConfig_content_date_time.value }}</textarea>
+        </div>
+      </div>
+
+       <div class="mb-3 row">
+        <label for="{{ formNews.newsConfig_content_video.name }}" class="col-sm-3 col-form-label">
+            {{ formNews.newsConfig_content_video.label }}
+        </label>
+        <div class="col-sm-9">
+             <textarea name="{{ formNews.newsConfig_content_video.name }}" class="form-control" id="{{ formNews.newsConfig_content_video.name }}" rows="1">{{ formNews.newsConfig_content_video.value }}</textarea>
+        </div>
+      </div>
+
+       <div class="mb-3 row">
+        <label for="{{ formNews.newsConfig_content_img.name }}" class="col-sm-3 col-form-label">
+            {{ formNews.newsConfig_content_img.label }}
+        </label>
+        <div class="col-sm-9">
+             <textarea name="{{ formNews.newsConfig_content_img.name }}" class="form-control" id="{{ formNews.newsConfig_content_img.name }}" rows="1">{{ formNews.newsConfig_content_img.value }}</textarea>
+        </div>
+      </div>
+      <input name="status" value="1" type="hidden">
+      <input name="allow" value="0" type="hidden">
+      <input name="readCount" value="0" type="hidden">
+
+
+  </div>
+</div>
+  </div>
+  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+</div>
+       {{formNews.errors}}
+      {{formNewsList.errors}}
+<div class="row">
+
+
+
+
+
+
+
+
+
+       <div class="col-sm-12" style="margin-top:50px;">
+
+    </div>
+
+
+</div>
+
+</form>
+
+
+{% for news in newsList %}
+    <table  style="margin-top:50px;border:solid 1px black;">
+        <tr><td>__host:  </td><td> {{ news.host }}</td></tr>
+        <tr><td>__link:  </td><td>  {{ news.link }}</td></tr>
+        <tr><td>__title:  </td><td>  {{ news.title }}</td></tr>
+        <tr><td>__category:  </td><td>  {{ news.category }}</td></tr>
+        <tr><td>__subcategory:  </td><td>  {{ news.subcategory }}</td></tr>
+        <tr><td>__content:  </td><td>  {{ news.content }}</td></tr>
+        <tr><td>__main_image:  </td><td>  {{ news.main_image }}</td></tr>
+        <tr><td>__content_image:  </td><td>  {{ news.content_image }}</td></tr>
+        <tr><td>__content_video:  </td><td>  {{ news.content_video }}</td></tr>
+        <tr><td>__date_time:  </td><td>  {{ news.date_time }}</td></tr>
+        <tr><td>__content_date_time:  </td><td>  {{ news.content_date_time }}</td></tr>
+    </table>
+{% endfor %}
+{% endblock %}
+

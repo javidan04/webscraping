@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+
+
+{% for news in newsList %}
+    <table>
+        <tr><td>__host: str </td><td> {{ news.host }}</td></tr>
+        <tr><td>__link: str </td><td>  {{ news.link }}</td></tr>
+        <tr><td>__title: str </td><td>  {{ news.title }}</td></tr>
+        <tr><td>__category: str </td><td>  {{ news.category }}</td></tr>
+        <tr><td>__subcategory: str </td><td>  {{ news.subcategory }}</td></tr>
+        <tr><td>__content: str </td><td>  {{ news.content }}</td></tr>
+        <tr><td>__main_image: str </td><td>  {{ news.main_image }}</td></tr>
+        <tr><td>__content_image: str </td><td>  {{ news.content_image }}</td></tr>
+        <tr><td>__content_video: str </td><td>  {{ news.content_video }}</td></tr>
+        <tr><td>__date_time: str </td><td>  {{ news.date_time }}</td></tr>
+        <tr><td>__content_date_time: str </td><td>  {{ news.content_date_time }}</td></tr>
+    </table>
+{% endfor %}
+
+</body>
+</html>
